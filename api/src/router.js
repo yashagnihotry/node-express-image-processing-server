@@ -33,5 +33,6 @@ router.post('/upload', upload.single('photo'), (request, response) => {
 
   return response.status(201).json({success: true});
 });
+const photoPath = path.resolve(__dirname, '../../client/photo-viewer.html');
 
 module.exports = router;
