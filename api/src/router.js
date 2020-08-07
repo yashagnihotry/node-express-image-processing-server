@@ -3,6 +3,8 @@ const multer = require('multer');
 const path = require('path');
 const imageProcessor = require('./imageProcessor');
 
+const photoPath = path.resolve(__dirname, '../../client/photo-viewer.html');
+
 const router = Router();
 
 const filename = (request, file, callback) => {
@@ -33,6 +35,9 @@ router.post('/upload', upload.single('photo'), (request, response) => {
 
   return response.status(201).json({success: true});
 });
-const photoPath = path.resolve(__dirname, '../../client/photo-viewer.html');
+
+router.get('/photo-viewer', (request, response) => {
+  response.sendFile(photoPath);
+});
 
 module.exports = router;
